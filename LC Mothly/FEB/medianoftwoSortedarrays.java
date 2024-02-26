@@ -1,4 +1,11 @@
 public class medianoftwoSortedarrays {
+
+    public static void main(String[] args) {
+        int[] a1 = { 1, 3, 4, 7, 10, 12 };
+        int[] a2 = { 2, 3, 6, 15 };
+
+    }
+       
         public double findMedianSortedArrays(int[] nums1, int[] nums2) {
             int n = nums1.length;
             int m = nums2.length;
