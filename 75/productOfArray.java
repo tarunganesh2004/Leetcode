@@ -1,4 +1,4 @@
-// Product of array except self
+// Product of array except self(prefixSumpred)
 // Leetcode : 238
 
 import java.util.Arrays;
