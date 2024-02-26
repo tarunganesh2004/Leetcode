@@ -7,7 +7,7 @@ class countPrefixandSuffixPairs {
     public static void main(String[] args) {
        String[] words = { "bc","b","ab" };// doesnt work for this input(Expected: 0, getting Output: 1)
         String[] words1 = { "a", "aba", "ababa", "aa"}; // output: 4
-        // System.out.println(countPairs(words1));
+        System.out.println(countPairs(words1));
         System.out.println(countPairs(words));
     }
 // correct method
