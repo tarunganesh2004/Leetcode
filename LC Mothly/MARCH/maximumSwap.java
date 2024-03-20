@@ -3,6 +3,7 @@
 public class maximumSwap {
     public static void main(String[] args) {
         int n = 9273;
+        System.out.println(maxSwap(n));
         // char[] digits = Integer.toString(n).toCharArray();
         // System.out.println(Arrays.toString(digits));
         // int[] last = new int[10];
@@ -20,9 +21,9 @@ public class maximumSwap {
             last[digits[i] - '0'] = i;
         }
 
-        for(int i=0; i<digits.length; i++){
-            for(int d=9; d>digits[i]-'0'; d--){
-                if(last[d]>i){
+        for (int i = 0; i < digits.length; i++) {
+            for (int d = 9; d > digits[i] - '0'; d--) {
+                if (last[d] > i) {
                     char temp = digits[i];
                     digits[i] = digits[last[d]];
                     digits[last[d]] = temp;
@@ -30,5 +31,6 @@ public class maximumSwap {
                 }
             }
         }
+        return n;
     }
 }
