@@ -35,6 +35,7 @@ public class sortCharactersbyFrequency {
         return sb.toString();
     }
 
+    // other method
     public static String frequencySort(String s) {
         char[] str = s.toCharArray();
         int[] freq = new int[128];
