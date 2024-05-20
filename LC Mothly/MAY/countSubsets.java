@@ -22,4 +22,21 @@ public class countSubsets {
             currentSubset.remove(currentSubset.size() - 1);
         }
     }
+
+    // Using Bit Manipulation
+    public static List<List<Integer>> subsets(int[] a) {
+        List<List<Integer>> res = new ArrayList<>();
+        int n = a.length;
+        int subsetcount = 1 << n; //2^n
+        for (int mask = 0; mask < subsetcount; mask++) {
+            List<Integer> subset = new ArrayList<>();
+            for (int i = 0; i < n; i++) {
+                if ((mask & (1 << i)) != 0) {
+                    subset.add(a[i]);
+                }
+            }
+            res.add(subset);
+        }
+        return res;
+    }
 }
