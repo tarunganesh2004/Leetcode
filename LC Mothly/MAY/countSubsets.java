@@ -3,25 +3,28 @@ import java.util.List;
 public class countSubsets {
     public static void main(String[] args) {
         int[] a = { 1, 2, 3 };
-        List<List<Integer>> subsets = findSubsets(a);
+        int[] b = { 4,6,1,2 };
+        List<List<Integer>> subsets = findSubsets(b);
+        List<List<Integer>> subsets1 = subsets(a);
         System.out.println(subsets);
+        System.out.println(subsets1);
     }
 
     public static List<List<Integer>> findSubsets(int[] a) {
-        List<List<Integer>> allsubsets = new ArrayList<>();
-        backtrack(0, a, new ArrayList<>(), allsubsets);
+        List<List<Integer>> allsubsets= new ArrayList<>();
+        backtrack(allsubsets, new ArrayList<>(), a, 0);
         return allsubsets;
     }
 
-    private static void backtrack(int start, int[] a, List<Integer> currentSubset, List<List<Integer>> allsubsets) {
-        allsubsets.add(new ArrayList<>(currentSubset));
-
+    public static void backtrack(List<List<Integer>> allsubsets, List<Integer> subset, int[] a, int start) {
+        allsubsets.add(new ArrayList<>(subset));
         for (int i = start; i < a.length; i++) {
-            currentSubset.add(a[i]);
-            backtrack(i + 1, a, currentSubset, allsubsets);
-            currentSubset.remove(currentSubset.size() - 1);
+            subset.add(a[i]);
+            backtrack(allsubsets, subset, a, i+ 1);
+            subset.remove(subset.size() - 1);
         }
     }
+   
 
     // Using Bit Manipulation
     public static List<List<Integer>> subsets(int[] a) {
