@@ -8,7 +8,7 @@ class rotateImage{
         // 8 5 2
         // 9 6 3
         System.out.println(Arrays.deepToString(rotate1(a)));
-        // System.out.println(Arrays.deepToString(rotate2(a)));
+        System.out.println(Arrays.deepToString(rotate2(a)));
     }
 
     public static int[][] rotate1(int[][] a) {
