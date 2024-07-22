@@ -39,7 +39,6 @@ class LinkedListCycle {
     }
     public static void main(String[] args) {
         int[] a = { 3, 2, 0, -4 };
-        int pos = 1;
         for (int i = 0; i < a.length; i++) {
             head = insert(head, a[i]);
         }
