@@ -19,7 +19,7 @@ class numberOfWaysToArriveAtDestination {
     static int mod = 1000000007;
 
     public static void main(String[] args) {
-        int[][] roads = { { 0, 6, 7 }, { 0, 1, 2 }, { 1, 2, 3 },{1,3,3},LC { 6, 3, 3 }, { 3, 5, 1 }, { 6, 5, 1 }, { 2, 5, 1 },
+        int[][] roads = { { 0, 6, 7 }, { 0, 1, 2 }, { 1, 2, 3 },{1,3,3}, { 6, 3, 3 }, { 3, 5, 1 }, { 6, 5, 1 }, { 2, 5, 1 },
                 { 0, 4, 5 }, { 4, 6, 2 } };
         int n = 7;
         System.out.println(countPaths(n, roads));
