@@ -7,7 +7,8 @@ class kPairsWithSmallestSums {
         int k = 3;
         System.out.println(kSmallest(nums1, nums2, k));
     }
-    // better approach
+
+    // better approach O(klogk) 
     public static List<List<Integer>> kSmallest(int[] a1, int[] a2, int k) {
         List<List<Integer>> r = new ArrayList<>();
         PriorityQueue<int[]> pq=new PriorityQueue<>(new Comparator<int[]>() {
