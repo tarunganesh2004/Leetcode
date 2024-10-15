@@ -1,4 +1,4 @@
-def _4Sum(nums):
+def _4Sum(nums,target):
     nums.sort()
     res=set()
     n=len(nums)
@@ -18,9 +18,9 @@ def _4Sum(nums):
                 while l<r:
                     t=nums[i]+nums[j]+nums[l]+nums[r]
     
-                    if t<0:
+                    if t<target:
                         l+=1
-                    elif t>0:
+                    elif t>target:
                         r-=1
                     else:
                         res.add((nums[i],nums[j],nums[l],nums[r]))
@@ -36,4 +36,5 @@ def _4Sum(nums):
     return res
 
 a=[1, 0, -1, 0, -2, 2]
-print(_4Sum(list(a))) # {(-2, -1, 1, 2), (-2, 0, 0, 2), (-1, 0, 0, 1)}
+target=0
+print(_4Sum(list(a),target)) # {(-2, -1, 1, 2), (-2, 0, 0, 2), (-1, 0, 0, 1)}
