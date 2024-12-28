@@ -2,7 +2,7 @@
 
 nums=[1,2,3]
 
-def subsets(nums):
+def subsets(nums): # TC O(2^n) SC O(2^n)
     res=[]
     def backtrack(start,path):
         res.append(path)
