@@ -18,6 +18,27 @@ def permute(nums):
     backtrack([])
     return res
 
+# if asked in java
+# public List<List<Integer>> permute(int[] nums) {
+#     List<List<Integer>> res=new ArrayList<>();
+#     backtrack(res,new ArrayList<>(),nums);
+#     return res;
+# }
+#
+# public void backtrack(List<List<Integer>> res,List<Integer> path,int[] nums){
+#     if(path.size()==nums.length){
+#         res.add(new ArrayList<>(path));
+#         return;
+#     }
+#     for(int num:nums){
+#         if(!path.contains(num)){
+#             path.add(num);
+#             backtrack(res,path,nums);
+#             path.remove(path.size()-1);
+#         }
+#     }
+# }
+
 def anotherApproach(nums):
     res=[]
 
