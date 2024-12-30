@@ -1,6 +1,7 @@
 # Max points on a line LC 149
 
 # Given n points on a 2D plane, find the maximum number of points that lie on the same straight line.
+from collections import defaultdict
 from math import gcd
 points=[[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 #points=[[1,1],[2,2],[3,3]]
@@ -12,25 +13,36 @@ points=[[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]
 # and then count the number of points that have the same slope
 
 def maxPoints(points):
-    slopes={}
-    n=len(points)
-    if n==1:
-        return 1
-    max_points=0
-    for i in range(n):
-        for j in range(i+1,n):
-            if points[i]==points[j]:
-                continue
-            if points[i][0]==points[j][0]:
-                slope=float('inf')
+    mx=0
+    if len(points)<=2:
+        return len(points)
+    
+    for i in range(len(points)-1):
+        m=[]
+        for j in range(i+1,len(points)):
+            dx=points[j][0]-points[i][0]
+            dy=points[j][1]-points[i][1]
+
+            if dx==0:
+                dy='undef'
+                m.append(dy)
             else:
-                slope=(points[j][1]-points[i][1])/(points[j][0]-points[i][0])
-            if slope not in slopes:
-                slopes[slope]=set()
-            slopes[slope].add(i)
-            slopes[slope].add(j)
-    for slope in slopes:
-        max_points=max(max_points,len(slopes[slope]))
-    return max_points
+                m.append(dy/dx)
+        mx=max(mx,m.count(max(set(m),key=m.count))+1)
+    return mx
+
+def anotherApproachSimple(points):
+    points.sort()
+    slope,M=defaultdict(int),0
+    for i,(x1,y1) in enumerate(points):
+        slope.clear()
+        for x2,y2 in points[i+1:]:
+            dx,dy=x2-x1,y2-y1
+            g=gcd(dx,dy)
+            m=(dx//g,dy//g) if g else (dx,dy)
+            slope[m]+=1
+            M=max(M,slope[m])
+    return M+1
 
 print(maxPoints(points))
+print(anotherApproachSimple(points))
