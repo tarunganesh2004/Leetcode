@@ -1,51 +1,38 @@
-# Sum pair closest to target
-# Given an array arr[] and a number target, find a pair of elements (a, b) in arr[], where a<=b whose sum is closest to target.
-# Note: Return the pair in sorted order and if there are multiple such pairs return the pair with maximum absolute difference. If no such pair exists return an empty array.
+# Minimum Number of Operations to Move All Balls to Each Box LC 1769
 
-arr=[10,30,20,5]
-target=25
+boxes="110" # [1,1,3]
 
-def closest_pair(arr,target):
-    arr.sort()
-    res=[arr[0],arr[-1]]
-    left=0
-    right=len(arr)-1
-    while left<right:
-        sum=arr[left]+arr[right]
-        if abs(sum-target)<abs(sum-res[0]-res[1]):
-            res=[arr[left],arr[right]]
-        if sum>target:
-            right-=1
-        else:
-            left+=1
-    return res
+def bruteForce(boxes):
+    n=len(boxes)
+    ans=[0]*n
+    for i in range(n):
+        for j in range(n):
+            if boxes[j]=='1':
+                ans[i]+=abs(j-i)
+    return ans
 
-def closest_pairAnother(arr,target):
-    n=len(arr)
-    if n<2:
-        return []
-    arr.sort()
-    res=[]
-    minDiff=float('inf')
-    left=0
-    right=n-1
+def minOperations(boxes):
+    n=len(boxes)
+    ans=[0]*n
+    # use prefix sum and suffix to calculate the number of balls to the left and right of each box
+    # left to right prefix sum
+    balls=0
+    operations=0
+    for i in range(n):
+        ans[i]+=operations
+        balls+=int(boxes[i])
+        operations+=balls
 
-    while left<right:
-        curSum=arr[left]+arr[right]
-        absDiff=abs(curSum-target)
+    # right to left suffix sum
+    balls=0
+    operations=0
+    for i in range(n-1,-1,-1):
+        ans[i]+=operations
+        balls+=int(boxes[i])
+        operations+=balls
 
-        if absDiff<minDiff:
-            res=[arr[left],arr[right]]
-            minDiff=absDiff
-        elif absDiff==minDiff:
-            # if the current pair has the same difference as the previous pair, then we need to check if the current pair has a greater difference than the previous pair
-            if abs(arr[right]-arr[left])>abs(res[1]-res[0]):
-                res=[arr[left],arr[right]]
-        if curSum>target:
-            right-=1
-        else:
-            left+=1
-    return res
+    return ans
 
-print(closest_pair(arr,target))
-print(closest_pairAnother(arr,target))
+print(bruteForce(boxes)) 
+
+print(minOperations(boxes)) # [1,1,3]
