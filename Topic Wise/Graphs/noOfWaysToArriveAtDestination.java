@@ -32,6 +32,7 @@ class numberOfWaysToArriveAtDestination {
         dist[0] = 0;
         pathCount[0] = 1;
 
+        @SuppressWarnings("unchecked")
         List<Node>[] graph = new ArrayList[n];
         for (int i = 0; i < n; i++) {
             graph[i] = new ArrayList<>();
