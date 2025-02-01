@@ -37,10 +37,28 @@ class Solution:
         l=TreeNode.inorder(root)  # noqa: E741
         return l[k-1]
     
+    # Optimized Solution is using dfs 
+    def kthSmallestOptimized(self,root,k):
+        def dfs(node):
+            if node is None:
+                return 
+            dfs(node.left)
+            if self.k==0:
+                return
+            self.k-=1
+            if self.k==0:
+                self.res = node.val
+            dfs(node.right)
 
+        self.k = k
+        self.res=0
+        dfs(root)
+        return self.res
+    
 
 arr=[3,1,4,None,2]
 k=1
 root = TreeNode.buildTree(arr)
 sol = Solution()
 print(sol.kthSmallest(root,k))
+print(sol.kthSmallestOptimized(root,k))
