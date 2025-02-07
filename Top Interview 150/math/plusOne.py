@@ -9,7 +9,7 @@ def plusOne(digits):
     # return [int(i) for i in str(s)]
 
     # without using string conversion
-    l=len(digits)
+    l=len(digits)  # noqa: E741
     k=l-1
     while digits[k]==9:
         digits[k]=0
