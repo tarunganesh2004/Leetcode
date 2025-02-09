@@ -4,6 +4,9 @@
 
 # Return the total number of bad pairs in nums.
 
+from collections import defaultdict
+
+
 nums=[4,1,3,3]
 
 def bruteForce(nums):
@@ -15,6 +18,16 @@ def bruteForce(nums):
                 count+=1
     return count
 
+def otherApproach(nums):
+    good_pairs=0
+    total_pairs=0
+    count=defaultdict(int)
+    for i in range(len(nums)):
+        total_pairs+=i
+        good_pairs+=count[i-nums[i]]
+        count[i-nums[i]]+=1
+    return total_pairs-good_pairs
+    
 
 def optimized(nums):
     n=len(nums)
