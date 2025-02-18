@@ -24,6 +24,36 @@ def smallestNumber(pattern):
                 res.append(str(st.pop()))
     return "".join(res)
 
+# using backtracking
+def anotherApproach(pattern):
+    def backtrack(cur_num,used,path):
+        if len(path)==len(pattern)+1:
+            return path
+        
+        # try 1-9
+        for i in range(1,10):
+            if i in used:
+                continue
 
+            # if path is empty, add the number
+            if not path:
+                used.add(i)
+                res=backtrack(i,used,path+str(i))
+                if res:
+                    return res
+                used.remove(i)
+                continue
+
+            # if the current number satisfies the pattern
+            if(pattern[len(path)-1]=='I' and i>cur_num) or (pattern[len(path)-1]=='D' and i<cur_num):
+                used.add(i)
+                res=backtrack(i,used,path+str(i))
+                if res:
+                    return res
+                used.remove(i)
+        
+        return None
+    return backtrack(None,set(),"")
 
 print(smallestNumber(pattern))
+print(anotherApproach(pattern))
