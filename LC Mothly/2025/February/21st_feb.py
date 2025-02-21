@@ -53,3 +53,19 @@ print(obj.find(1))
 print(obj.find(3))
 print(obj.find(5))
 print(obj.find(7))
+
+
+# Another approach is to use dfs
+class findElements:
+    def __init__(self,root):
+        def dfs(node,val):
+            if not node:
+                return
+            self.visited.add(val)
+            dfs(node.left,2*val+1)
+            dfs(node.right,2*val+2)
+        self.visited=set()
+        dfs(root,0)
+
+    def find(self,target):
+        return target in self.visited
