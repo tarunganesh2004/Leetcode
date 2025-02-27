@@ -18,4 +18,18 @@ def brute_force(arr):
             res=max(res,l)
     return res
 
+# using recursion
+def recursive_fib(arr):
+    s=set(arr)
+    def helper(a,b):
+        if a+b not in s:
+            return 2
+        return 1+helper(b,a+b)
+    res=0
+    for i in range(len(arr)):
+        for j in range(i+1,len(arr)):
+            res=max(res,helper(arr[i],arr[j]))
+    return res
+
 print(brute_force(arr)) # 5
+print(recursive_fib(arr)) # 5
