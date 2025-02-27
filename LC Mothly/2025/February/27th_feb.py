@@ -31,5 +31,22 @@ def recursive_fib(arr):
             res=max(res,helper(arr[i],arr[j]))
     return res
 
+# using dp (hashmap)
+def optimized(arr):
+    idx={x:i for i,x in enumerate(arr)} # value to index mapping
+    dp={}
+    res=0
+
+    for k in range(len(arr)):
+        for j in range(k):
+            i=idx.get(arr[k]-arr[j]) # find i where arr[i]+arr[j]=arr[k]
+            if i is not None and i<j:
+                dp[(j,k)]=dp.get((i,j),2)+1 # extend the sequence
+                res=max(res,dp[(j,k)])
+
+    return res if res>2 else 0
+
 print(brute_force(arr)) # 5
 print(recursive_fib(arr)) # 5
+
+print(optimized(arr)) # 5
