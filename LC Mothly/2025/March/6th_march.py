@@ -19,4 +19,20 @@ def findMissingAndRepeated(grid):
             repeated=num
     return [repeated,missing]
 
+# using set
+def anotherApproach(grid):
+    n=len(grid)
+    curSum=(n*n)*((n*n)+1)//2
+    seen=set()
+    for i in range(n):
+        for j in range(n):
+            if grid[i][j] not in seen:
+                seen.add(grid[i][j])
+                curSum-=grid[i][j]
+            else:
+                repeated=grid[i][j]
+    return [repeated,curSum]
+
 print(findMissingAndRepeated(grid))
+
+print(anotherApproach(grid))
