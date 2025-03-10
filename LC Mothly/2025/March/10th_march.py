@@ -3,7 +3,7 @@
 s="aeioqq"
 k=1
 
-def bruteForce(s,k):
+def bruteForce(s,k): # TLE
     n=len(s)
     def solve(str,k):
         v="aeiou"
