@@ -12,3 +12,4 @@ def bruteForce(s):
                 res+=1
     return res
 
+print(bruteForce(s))
