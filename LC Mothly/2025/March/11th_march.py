@@ -29,3 +29,4 @@ def optimized(s):
     return res
 
 print(bruteForce(s))
+print(optimized(s))
