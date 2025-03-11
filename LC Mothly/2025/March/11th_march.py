@@ -28,5 +28,15 @@ def optimized(s):
             left+=1
     return res
 
+# Another O(1) space solution is track last positions
+def optimizedSpace(s):
+    last_pos=[-1]*3
+    res=0
+    for pos in range(len(s)):
+        last_pos[ord(s[pos])-ord('a')]=pos
+        
+        res+=1+min(last_pos)
+    return res
+
 print(bruteForce(s))
 print(optimized(s))
