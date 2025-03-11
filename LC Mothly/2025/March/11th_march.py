@@ -40,3 +40,4 @@ def optimizedSpace(s):
 
 print(bruteForce(s))
 print(optimized(s))
+print(optimizedSpace(s))
