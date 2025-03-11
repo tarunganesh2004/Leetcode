@@ -3,7 +3,7 @@
 s="abcabc"
 
 # brute force
-def bruteForce(s):
+def bruteForce(s): # TLE, O(n^3)
     n=len(s)
     res=0
     for i in range(n):
