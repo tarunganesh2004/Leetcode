@@ -25,5 +25,28 @@ def maxCandies(candies,k):
 
     return ans
 
+# optimized way(another solution)
+def maxCandiesAnother(candies,k):
+    def isPossible(max_candies):
+        res=0
+        for candy in candies:
+            res+=candy//max_candies
+        if res>=k:
+            return True
+        return False
+    
+    if sum(candies)<k:
+        return 0
+    
+    left,right=1,sum(candies)//k
+    while left<right:
+        mid=(left+right)//2+1
+        if isPossible(mid):
+            left=mid
+        else:
+            right=mid-1
+    return left
+    
 
 print(maxCandies(candies,k))
+print(maxCandiesAnother(candies,k))
