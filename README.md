@@ -14,8 +14,8 @@ This repository contains my **LeetCode solutions** in **Python** and **Java**, c
 
 ## 🔄 Updates
 I will be updating this repository daily with:
-✅ New LeetCode questions
-✅ More topic-wise problems
-✅ Interview-specific questions
+- ✅ New LeetCode questions
+- ✅ More topic-wise problems
+- ✅ Interview-specific questions
 
 Stay tuned for regular updates! 🚀
