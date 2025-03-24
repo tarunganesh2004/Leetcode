@@ -25,5 +25,20 @@ def countDaysWithoutMeetings(days,meetings):
     
     return len(set(range(1,days+1))-meetingDays)
 
+# using sorting
+def countDays(days,meetings):
+    free_days=0
+    latest_end=0
+
+    meetings.sort()
+    for start,end in meetings:
+        if start>latest_end:
+            free_days+=start-latest_end-1
+        latest_end=max(latest_end,end)
+
+    free_days+=days-latest_end
+    return free_days
+
 print(bruteForce(days,meetings))
 print(countDaysWithoutMeetings(days,meetings))
+print(countDays(days,meetings))
