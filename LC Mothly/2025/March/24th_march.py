@@ -1,5 +1,6 @@
 # Count Days Without Meetings LC 3169
 
+
 days=10
 meetings=[[5,7],[1,3],[9,10]]
 
@@ -39,6 +40,22 @@ def countDays(days,meetings):
     free_days+=days-latest_end
     return free_days
 
+# another simple approach(similar to merge intervals)
+def anotherWay(days,meetings):
+    meetings.sort(key=lambda x:x[0])
+    count=meetings[0][0]-1
+    n=len(meetings)
+    for i in range(1,n):
+        if meetings[i][0]<=meetings[i-1][1]:
+            if meetings[i][1]<=meetings[i-1][1]:
+                meetings[i][1]=meetings[i-1][1]
+        else:
+            dy=meetings[i][0]-meetings[i-1][1]
+            count+=dy-1
+    count+=days-meetings[n-1][1]
+    return count
+
 print(bruteForce(days,meetings))
 print(countDaysWithoutMeetings(days,meetings))
 print(countDays(days,meetings))
+print(anotherWay(days,meetings))
