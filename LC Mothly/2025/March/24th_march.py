@@ -16,6 +16,14 @@ def bruteForce(days,meetings):
             c+=1
     return c
 
-
+# using set(memory limit exceeded)
+def countDaysWithoutMeetings(days,meetings):
+    meetingDays=set()
+    for start,end in meetings:
+        for i in range(start,end+1):
+            meetingDays.add(i)
+    
+    return len(set(range(1,days+1))-meetingDays)
 
 print(bruteForce(days,meetings))
+print(countDaysWithoutMeetings(days,meetings))
