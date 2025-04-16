@@ -48,6 +48,27 @@ def brute_force(nums):
 
     return count
 
+# optimized
+def optimized(nums,k):
+    from collections import defaultdict
+    n=len(nums)
+    count=0
+    freq=defaultdict(int)
+    left=0
+    pairs=0
+    for right in range(n):
+        val=nums[right]
+        pairs+=freq[val]
+        freq[val]+=1
+
+        while pairs>=k:
+            count+=(n-right) # all subarrays from left to right(inclusive) are good
+            freq[nums[left]]-=1
+            pairs-=freq[nums[left]]
+            left+=1
+
+    return count
 
 
 print(brute_force(nums))
+print(optimized(nums,k))
