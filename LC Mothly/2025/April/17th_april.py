@@ -12,4 +12,19 @@ def bruteForce(nums,k):
                 cnt+=1
     return cnt
 
+# optimized using map 
+
+def optimized(nums,k):
+    from collections import defaultdict
+    map=defaultdict(list)
+    cnt=0
+    for i,num in enumerate(nums):
+        for j in map[num]:
+            if i*j%k==0:
+                cnt+=1
+        map[num].append(i)
+    return cnt
+
 print(bruteForce(nums,k))
+
+print(optimized(nums,k))
