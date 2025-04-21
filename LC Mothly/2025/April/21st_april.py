@@ -20,4 +20,3 @@ def numberOfArrays(differences,lower,upper):
     return max(0,max_a0-min_a0+1)
 
 print(numberOfArrays(differences,lower,upper)) # Output: 2
-
