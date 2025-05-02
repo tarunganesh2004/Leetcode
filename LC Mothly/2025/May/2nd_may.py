@@ -2,37 +2,50 @@
 
 dominoes= "RR.L"
 
-def pushDominoes(dominoes):
-    n = len(dominoes)
-    dominoes = list(dominoes)
-    l = 0  # noqa: E741
-    r = 0
+class Solution:
+    def pushDominoes(self,dominoes):
+        n = len(dominoes)
+        left = [0] * n
+        right = [0] * n
 
-    while l < n:
-        while r < n and dominoes[r] == '.':
-            r += 1
+        # traverse from left side
+        # keep count of 'R' occurennces
+        count = 0
+        for i in range(n):
+            if dominoes[i] == "L" or dominoes[i] == "R":
+                count = 0
+            left[i] = count
+            if dominoes[i] == "R" or count != 0:
+                count += 1
 
-        if l == r:
-            l += 1  # noqa: E741
-            r += 1
-            continue
+        # traverse from right side
+        # keep count of 'L' occurennces
+        count = 0
+        for i in range(n - 1, -1, -1):
+            if dominoes[i] == "R" or dominoes[i] == "L":
+                count = 0
+            right[i] = count
+            if dominoes[i] == "L" or count != 0:
+                count += 1
 
-        if r == n:
-            break
+        # print(left)
+        # print(right)
 
-        if dominoes[l] == dominoes[r]:
-            for i in range(l, r):
-                dominoes[i] = dominoes[l]
-        elif dominoes[l] == 'R' and dominoes[r] == 'L':
-            for i in range(l + 1, r):
-                dominoes[i] = '.'
-        else:
-            for i in range((l + r) // 2, (l + r) // 2 + 1):
-                dominoes[i] = '.'
+        ans = ""
+        for i in range(n):
+            if left[i] == right[i]:
+                ans += dominoes[i]
+            else:
+                if left[i] == 0 and right[i] != 0:
+                    ans += "L"
+                elif right[i] == 0 and left[i] != 0:
+                    ans += "R"
+                elif left[i] > right[i]:
+                    ans += "L"
+                else:
+                    ans += "R"
 
-        l = r + 1  # noqa: E741
-        r = l
+        return ans
 
-    return ''.join(dominoes)
-
-print(pushDominoes(dominoes))  # Output: "RR.L"
+s= Solution()
+print(s.pushDominoes(dominoes))  # Output: "RR.L"
