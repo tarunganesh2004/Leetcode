@@ -30,7 +30,7 @@ def maxTargetNodes(edges1, edges2):
     evens1 = find_even(edges1, n)
     evens2 = find_even(edges2, m)
     sm1,sm2=sum(evens1), sum(evens2)
-    mx=max(sm2, m - sm1)
+    mx=max(sm2, m - sm2)
     ans=[mx+(sm1 if even else n-sm1) for even in evens1]
     return ans
 
