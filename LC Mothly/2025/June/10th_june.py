@@ -7,7 +7,7 @@ def maxDifference(s):
 
     freq= Counter(s)
     maxOdd=max(v for v in freq.values() if v % 2 == 1)
-    maxEven=max(v for v in freq.values() if v % 2 == 0)
-    return maxOdd - maxEven
+    minEven=max(v for v in freq.values() if v % 2 == 0)
+    return maxOdd - minEven
 
 print(maxDifference(s))  # Output: 3
