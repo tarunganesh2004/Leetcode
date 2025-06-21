@@ -16,9 +16,9 @@ def minimumDeletions(word,k):
         for b in cnt.values():
             if a>b:
                 deleted+=b
-            elif b>a-k:
+            elif b>a+k:
                 deleted+=b-(a+k)
         n=min(n,deleted)
     return n
 
-print(minimumDeletions(s,k))  
+print(minimumDeletions(s,k)) 
