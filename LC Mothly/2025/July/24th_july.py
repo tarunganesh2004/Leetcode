@@ -1,4 +1,4 @@
-# Minimum Score After Removals on a Tree 
+# Minimum Score After Removals on a Tree LC 2322
 
 from collections import defaultdict
 
