@@ -68,5 +68,39 @@ def generate(nums,target=24.0):
     dfs(items)
     return solutions
 
+# optimized
+def optimized(nums):
+    def dfs(nums):
+        if len(nums)==1:
+            return abs(nums[0] - 24) < 1e-6
+        
+        for i in range(len(nums)):
+            for j in range(len(nums)):
+                if i!=j:
+                    a,b= nums[i], nums[j]
+
+                    # create new list without a and b
+                    next_nums=[]
+                    for k in range(len(nums)):
+                        if k != i and k != j:
+                            next_nums.append(nums[k])
+
+                    # try all operations
+                    # addition
+                    if dfs(next_nums + [a + b]):
+                        return True
+                    # subtraction
+                    if dfs(next_nums + [a - b]):
+                        return True
+                    # multiplication
+                    if dfs(next_nums + [a * b]):
+                        return True
+                    # division
+                    if b != 0 and dfs(next_nums + [a / b]):
+                        return True
+        return False
+    return dfs(nums)
+
 print(bruteForce(cards))  # Output: True
 print(generate(cards))
+print(optimized(cards))  # Output: True
