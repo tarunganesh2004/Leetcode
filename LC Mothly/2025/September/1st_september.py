@@ -1,17 +1,23 @@
-# Find the Number of Ways to Place People I LC 3025
+# Maximum Average Pass Ratio LC 1792
 
-points=[[1,1],[2,2],[3,3]]
+classes=[[1,2],[3,5],[2,2]]
+extraStudents=2
 
-def numberOfPairs(points):
-    points.sort(key=lambda x:(-x[0],x[1]))
+def maxAverageRatio(classes,extraStudents):
+    import heapq 
+    def gain(p,t):
+        return (p+1)/(t+1) - p/t
+    
+    heap=[(-gain(p,t),p,t) for p,t in classes]
+    heapq.heapify(heap)
 
-    n,ans=len(points),0
-    for i in range(n-1):
-        y=1<<31
-        for j in range(i+1,n):
-            if y>points[j][1]>=points[i][1]:
-                ans+=1
-                y=points[j][1]
-    return ans
+    for _ in range(extraStudents):
+        g,p,t=heapq.heappop(heap)
+        p+=1
+        t+=1
+        heapq.heappush(heap,(-gain(p,t),p,t))
 
-print(numberOfPairs(points))
+    total=sum(p/t for _,p,t in heap)
+    return total/len(classes)
+
+print(maxAverageRatio(classes,extraStudents))
